@@ -29,7 +29,7 @@ def select(id):
     session = None
     sql = "SELECT * FROM sessions WHERE id = %s"
     values = [id]
-    result = run_sql(sqal, values)[0]
+    result = run_sql(sql, values)[0]
 
     if result is not None:
         session = Session(result['name'], result['capacity'], result['time'], result['date'], result['id'])

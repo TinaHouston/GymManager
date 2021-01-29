@@ -24,6 +24,6 @@ session_2 = Session("Yoga", False, "1:00pm", "31/01/21")
 session_repository.save(session_2)
 
 booking_1 = Booking(member_1, session_2)
-booking_repository.save(booking)
+booking_repository.save(booking_1)
 
 pdb.set_trace()

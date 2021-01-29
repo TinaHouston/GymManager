@@ -33,3 +33,15 @@ def select(id):
     if result is not None:
         member = Member(result['name'], result['age'], result['id'])
     return member
+
+def sessions(member):
+    sessions = []
+
+    sql = "SELECT sessions.* from sessions INNER JOIN bookings ON bookings.session_id = sessions.id WHERE member_id = %s"
+    values = [member.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        session = Session(row['name'], row['capacity'], row['time'], row['date'], row['id'])
+        sessions.append(session)
+    return sessions
