@@ -51,3 +51,9 @@ def delete(id):
     sql = "DELETE FROM sessions WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def update(session):
+    sql = "UPDATE sessions SET (name, capacity, time, date) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [session.name, session.capacity, session.time, session.date, session.id]
+    print(values)
+    run_sql(sql, values)

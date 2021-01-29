@@ -6,6 +6,8 @@
 {% for member in members %}
 <div class="user_container">
 <p>Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
+<p>{{member.age}}</p>
+<p><a href="/members/{{member.id}}/edit">Edit</a></p>
 <hr>
 {% endfor %}
 <p><a href="/members/new">Register new member</a></p>

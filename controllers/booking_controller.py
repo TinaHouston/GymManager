@@ -32,3 +32,20 @@ def create_booking():
 def delete_booking(id):
     booking_repository.delete(id)
     return redirect('/bookings')
+
+@bookings_blueprint.route("/bookings/<id>/edit", methods = ['GET'])
+def edit_booking(id):
+    booking = booking_repository.select(id)
+    members = member_repository.select_all()
+    sessions = session_repository.select_all()
+    return render_template("bookings/edit.html", bookings = bookings, all_members = members, all_sessions = sessions)
+
+@bookings_blueprint.route("/bookings/<id>", methods = ['POST'])
+def update_book(id):
+    member.id = request.form['member_id']
+    session_id = request.form['session_id']
+    member = member_repository.select(member_id)
+    session = session_repository.select(session_id)
+    booking = Booking(member, session, id)
+    booking_repository.update(booking)
+    return redirect("/bookings")

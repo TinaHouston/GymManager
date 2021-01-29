@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/bookings/{{booking.id}}" method="post">
+    <div>
+        <label for="member">Member:</label>
+        <select name="member_id" id="member">
+            {% for member in all_members %}
+                <option value="{{member.id}}" {% if booking.member.id == member.id %} selected="selected" {% endif %}>{{member.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="session">Class:</label>
+        <select name="session_id" id="session">
+            {% for session in all_sessions %}
+                <option value="{{session.id}}" {% if booking.session.id == session.id %} selected="selected" {% endif %}>{{session.name}} {{session.date}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <hr>
+    <button type="submit">Add Booking</button>
+</form>
+
+{% endblock %}

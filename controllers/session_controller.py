@@ -30,3 +30,18 @@ def create_session():
     session = Session(name, capacity, time, date)
     session_repository.save(session)
     return redirect("/sessions")
+
+@sessions_blueprint.route("/sessions/<id>/edit", methods = ['GET'])
+def edit_session(id):
+    session = session_repository.select(id)
+    return render_template("sessions/edit.html", session = session)
+
+@sessions_blueprint.route("/sessions/<id>", methods = ['POST'])
+def update_class(id):
+    name = request.form['name']
+    capacity = request.form['capacity']
+    time = request.form['time']
+    date = request.form['date']
+    session = Session(name, capacity, time, date, id)
+    session_repository.update(session)
+    return redirect("/sessions")

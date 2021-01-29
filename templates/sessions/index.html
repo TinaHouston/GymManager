@@ -12,6 +12,8 @@
     <th>Time</th>
     <th></th>
     <th>Date</th>
+    <th></th>
+    <th>Wrong info</th>
   </tr>
   {% for session in sessions %}
   <tr>
@@ -22,6 +24,8 @@
     <td>{{session.time}}</td>
     <td>|</td>
     <td>{{session.date}}</td>
+    <td>|</td>
+    <td><a href="/sessions/{{session.id}}/edit">Edit</a></td>
   </tr>
   {% endfor %}
 </table>

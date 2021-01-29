@@ -33,3 +33,21 @@ def delete(id):
     sql = "DELETE FROM bookings WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def update(booking):
+    sql = "UPDATE bookings SET (member_id, session_id) = (%s, %s) WHERE id = %s"
+    values = [booking.member.id, booking.session.id, booking.id]
+    print(values)
+    run_sql(sql, values)
+
+def select(id):
+    booking = None
+    sql = "SELECT * FROM bookings WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        member = member_repository.select(result['member_id'])
+        session = session_repository.select(result['session_id'])
+        booking = Booking(member, session, result['id'])
+    return booking
