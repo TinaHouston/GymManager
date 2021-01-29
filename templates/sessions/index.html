@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Classes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Availability</th>
+    <th></th>
+    <th>Time</th>
+    <th></th>
+    <th>Date</th>
+  </tr>
+  {% for session in sessions %}
+  <tr>
+    <td><a href="/sessions/{{session.id}}">{{session.name}}</a></td>
+    <td>|</td>
+    <td>{{session.capacity}}</td>
+    <td>|</td>
+    <td>{{session.time}}</td>
+    <td>|</td>
+    <td>{{session.date}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

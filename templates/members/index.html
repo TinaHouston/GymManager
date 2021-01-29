@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="users_heading">Users</h1>
+
+{% for member in members %}
+<div class="user_container">
+<p>Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
+<hr>
+{% endfor %}
+</div>
+
+{% endblock %}
