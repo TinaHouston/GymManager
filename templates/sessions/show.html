@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{session.name}} </h1>
+
+<h3>Member's who've booked:</h3>
+<ul>
+    {% for member in members %}
+    <li>{{member.name}}</li>
+    <li>{{member.age}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

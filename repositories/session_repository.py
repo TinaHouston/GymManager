@@ -34,3 +34,20 @@ def select(id):
     if result is not None:
         session = Session(result['name'], result['capacity'], result['time'], result['date'], result['id'])
     return session
+
+def members(session):
+    members = []
+
+    sql = "SELECT members.* from members INNER JOIN bookings ON bookings.member_id = members.id WHERE session_id = %s"
+    values = [session.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        member = Member(row['name'], row['age'], row['id'])
+        members.append(member)
+    return members
+
+def delete(id):
+    sql = "DELETE FROM sessions WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
