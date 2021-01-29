@@ -6,3 +6,8 @@ import repositories.member_repository as member_repository
 import repositories.session_repository as session_repository
 
 bookings_blueprint = Blueprint("bookings", __name__)
+
+@bookings_blueprint.route("/bookings")
+def bookings():
+    bookings = booking_repository.select_all()
+    return render_template("bookings/index.html", bookings=bookings)

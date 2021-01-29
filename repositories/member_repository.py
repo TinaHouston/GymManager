@@ -23,3 +23,13 @@ def select_all():
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)
+
+def select(id):
+    user = None
+    sql = "SELECT * FROM members WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        member = Member(result['name'], result['age'], result['id'])
+    return member

@@ -9,6 +9,7 @@ import repositories.booking_repository as booking_repository
 
 member_repository.delete_all()
 session_repository.delete_all()
+booking_repository.delete_all()
 
 member_1 = Member("Tina", 26)
 member_repository.save(member_1)
@@ -21,5 +22,8 @@ session_repository.save(session_1)
 
 session_2 = Session("Yoga", False, "1:00pm", "31/01/21")
 session_repository.save(session_2)
+
+booking_1 = Booking(member_1, session_2)
+booking_repository.save(booking)
 
 pdb.set_trace()
