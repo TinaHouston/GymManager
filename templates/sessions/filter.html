@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th><u>Name</u></th>
+        <th>|</th>
+        <th><u>Availability</u></th>
+        <th>|</th>
+        <th><u>Time</u></th>
+        <th>|</th>
+        <th><u>Date</u></th>
+        <th>|</th>
+        <th><u>Update</u></th>
+    </tr>
+    {% for session in sessions %}
+    {% if session.capacity %}
+    <tr>
+        <td><a href="/sessions/{{session.id}}">{{session.name}}</a></td>
+        <td>|</td>
+        <td>{{session.capacity}}</td>
+        <td>|</td>
+        <td>{{session.time}}</td>
+        <td>|</td>
+        <td>{{session.date}}</td>
+        <td>|</td>
+        <td><a href="/sessions/{{session.id}}/edit">Edit</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+{% endblock %}

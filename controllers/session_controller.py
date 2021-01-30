@@ -45,3 +45,8 @@ def update_class(id):
     session = Session(name, capacity, time, date, id)
     session_repository.update(session)
     return redirect("/sessions")
+
+@sessions_blueprint.route("/sessions/filter")
+def show_available_sessions():
+    sessions = session_repository.select_all()
+    return render_template("/sessions/filter.html", sessions=sessions)

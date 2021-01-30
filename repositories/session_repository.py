@@ -57,3 +57,7 @@ def update(session):
     values = [session.name, session.capacity, session.time, session.date, session.id]
     print(values)
     run_sql(sql, values)
+
+def show_available():
+    sql = "SELECT * FROM sessions WHERE capacity = True"
+    results = run_sql(sql)

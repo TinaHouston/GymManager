@@ -42,3 +42,4 @@ def update_member(id):
     member = Member(name, age, id)
     member_repository.update(member)
     return redirect("/members")
+
