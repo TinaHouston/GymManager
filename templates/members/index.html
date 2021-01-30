@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="users_heading">Users</h1>
+<h1 class="users_heading">Member List</h1>
 
 {% for member in members %}
 <div class="user_container">
-<p>Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
-<p>{{member.age}}</p>
+<p>Full Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
+<p>Age: {{member.age}}</p>
 <p><a href="/members/{{member.id}}/edit">Edit</a></p>
 <hr>
 {% endfor %}

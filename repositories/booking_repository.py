@@ -4,6 +4,7 @@ from models.booking import Booking
 
 import repositories.member_repository as member_repository
 import repositories.session_repository as session_repository
+import repositories.booking_repository as booking_repository
 
 def save(booking):
     sql = "INSERT INTO bookings (member_id, session_id) VALUES (%s, %s) RETURNING id"

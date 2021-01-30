@@ -6,7 +6,7 @@
 <h3>Bookings:</h3>
 <ul>
     {% for session in sessions %}
-    <li>{{session.name}}</li>
+    <li><b>{{session.name}}</b>, {{session.date}} - {{session.time}}</li>
     {% endfor %}
 </ul>
 

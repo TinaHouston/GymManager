@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Classes</h1>
+<h1>Upcoming Classes</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th></th>
-    <th>Availability</th>
-    <th></th>
-    <th>Time</th>
-    <th></th>
-    <th>Date</th>
-    <th></th>
-    <th>Wrong info</th>
+    <th><u>Name</u></th>
+    <th>|</th>
+    <th><u>Availability</u></th>
+    <th>|</th>
+    <th><u>Time</u></th>
+    <th>|</th>
+    <th><u>Date</u></th>
+    <th>|</th>
+    <th><u>Update</u></th>
   </tr>
   {% for session in sessions %}
   <tr>

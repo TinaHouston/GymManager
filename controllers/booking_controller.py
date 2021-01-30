@@ -38,11 +38,11 @@ def edit_booking(id):
     booking = booking_repository.select(id)
     members = member_repository.select_all()
     sessions = session_repository.select_all()
-    return render_template("bookings/edit.html", bookings = bookings, all_members = members, all_sessions = sessions)
+    return render_template("bookings/edit.html", booking = booking, all_members = members, all_sessions = sessions)
 
 @bookings_blueprint.route("/bookings/<id>", methods = ['POST'])
 def update_book(id):
-    member.id = request.form['member_id']
+    member_id = request.form['member_id']
     session_id = request.form['session_id']
     member = member_repository.select(member_id)
     session = session_repository.select(session_id)

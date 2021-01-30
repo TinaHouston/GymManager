@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Bookings</h1>
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/bookings/new">New booking</a>
-</p>
+<h1>Bookings Diary</h1>
 <ul>
   {% for booking in bookings %}
-  <li>
-  <p>{{booking.member.name }} - {{booking.session.name}}, {{booking.session.time}}, {{booking.session.date}}</p>
-  <p>"<i>{{booking.session.date}}</i>"</p>
+  <li>Member: {{booking.member.name}}</li>
+  <li>Class Booked: {{booking.session.name}}</li>
+  <li>Date: {{booking.session.date}}</li>
+  <li>Time: {{booking.session.time}}</li>
     <p>
       <form action="/bookings/{{booking.id}}/delete" method="POST">
-        <input class="btn btn--danger" type="submit" value="delete" />
+        <input class="btn btn--danger" type="submit" value="delete"/>
+      </form>
+      <form action="bookings/{{booking.id}}/edit" method="GET">
+      <input class="edit_button" type="submit" value="edit"/>
       </form>
     </p>
-  </li>
-  <p><a href="/bookings/{{booking.id}}/edit">Edit Booking</a></p>
+  <hr>
   {% endfor %}
-</ul>
+  </ul>
+  <p class="btn--wrapper">
+    <a class="btn btn--action" href="/bookings/new">New booking</a>
+  </p>
 {% endblock %}
