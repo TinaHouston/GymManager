@@ -9,11 +9,12 @@
   <li>Date: {{booking.session.date}}</li>
   <li>Time: {{booking.session.time}}</li>
     <p>
-      <form action="/bookings/{{booking.id}}/delete" method="POST">
-        <input class="btn btn--danger" type="submit" value="delete"/>
-      </form>
       <form action="bookings/{{booking.id}}/edit" method="GET">
-      <input class="edit_button" type="submit" value="edit"/>
+        <input class="edit_button" type="submit" value="Edit"/>
+        </form>
+        <br>
+      <form action="/bookings/{{booking.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+        <input class="btn btn--danger" type="submit" value="Delete"/>
       </form>
     </p>
   <hr>

@@ -10,6 +10,13 @@
         <label for="age">Age:</label>
         <input type="text" id="age" value="{{member.age}}" name="age" placeholder="Age" required>
     </div>
+    <div>
+        <label for="active">Active Membership:</label>
+        <select name="active" id="active">
+            <option value=True {% if member.active == member.active %} selected="selected" {% endif %}>True</option>
+            <option value=False {% if member.active == member.active %} selected="selected" {% endif %}>False</option>
+        </select>
+    </div>
     <hr>
     <button type="submit">Update Member</button>
 </form>

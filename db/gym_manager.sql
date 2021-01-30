@@ -5,7 +5,8 @@ DROP TABLE sessions;
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
     name TEXT,
-    age INT
+    age INT,
+    active BOOL
 );
 
 CREATE TABLE sessions (

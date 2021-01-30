@@ -11,16 +11,16 @@ member_repository.delete_all()
 session_repository.delete_all()
 booking_repository.delete_all()
 
-member_1 = Member("Tina Houston", 26)
+member_1 = Member("Tina Houston", 26, True)
 member_repository.save(member_1)
 
-member_2 = Member("Sara Meil", 27)
+member_2 = Member("Sara Meil", 27, False)
 member_repository.save(member_2)
 
-member_3 = Member("Stuart Coull", 27)
+member_3 = Member("Stuart Coull", 27, False)
 member_repository.save(member_3)
 
-member_4 = Member("Amanda Burns", 31)
+member_4 = Member("Amanda Burns", 31, True)
 member_repository.save(member_4)
 
 session_1 = Session("Body Pump", True, "12:00pm", "31/01/21")

@@ -4,8 +4,8 @@ from models.session import Session
 from models.member import Member
 
 def save(member):
-    sql = "INSERT INTO members(name, age) VALUES (%s, %s) RETURNING id"
-    values = [member.name, member.age]
+    sql = "INSERT INTO members(name, age, active) VALUES (%s, %s, %s) RETURNING id"
+    values = [member.name, member.age, member.active]
     results = run_sql(sql, values)
     member.id = results[0]['id']
     return member
@@ -16,7 +16,7 @@ def select_all():
     sql = "SELECT * FROM members"
     results = run_sql(sql)
     for row in results:
-        member = Member(row['name'], row['age'], row['id'])
+        member = Member(row['name'], row['age'], row['active'], row['id'])
         members.append(member)
     return members
 
@@ -31,7 +31,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        member = Member(result['name'], result['age'], result['id'])
+        member = Member(result['name'], result['age'], result['active'], result['id'])
     return member
 
 def sessions(member):
@@ -52,7 +52,7 @@ def delete(id):
     run_sql(sql, values)
 
 def update(member):
-    sql = "UPDATE members SET (name, age) = (%s, %s) WHERE id = %s"
-    values = [member.name, member.age, member.id]
+    sql = "UPDATE members SET (name, age, active) = (%s, %s, %s) WHERE id = %s"
+    values = [member.name, member.age, member.active, member.id]
     print(values)
     run_sql(sql, values)

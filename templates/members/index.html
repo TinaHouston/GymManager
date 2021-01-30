@@ -7,7 +7,13 @@
 <div class="user_container">
 <p>Full Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
 <p>Age: {{member.age}}</p>
-<p><a href="/members/{{member.id}}/edit">Edit</a></p>
+<p>Active Membership: {{member.active}}</p>
+<p><form action="/members/{{member.id}}/edit" method="GET">
+    <input class="edit_button" type="submit" value="Edit"/>
+    </form></p>
+<p><form action="/members/{{member.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+    <input class="btn btn--danger" type="submit" value="Delete"/>
+    </form></p>
 <hr>
 {% endfor %}
 <p><a href="/members/new">Register new member</a></p>

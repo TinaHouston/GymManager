@@ -26,7 +26,8 @@ def new_member():
 def create_session():
     name = request.form['name']
     age = request.form['age']
-    member = Member(name, age)
+    active = request.form['active']
+    member = Member(name, age, active)
     member_repository.save(member)
     return redirect("/members")
 
@@ -39,7 +40,12 @@ def edit_member(id):
 def update_member(id):
     name = request.form['name']
     age = request.form['age']
-    member = Member(name, age, id)
+    active = request.form['active']
+    member = Member(name, age, active, id)
     member_repository.update(member)
     return redirect("/members")
 
+@members_blueprint.route("/members/<id>/delete", methods=['POST'])
+def delete_member(id):
+    member_repository.delete(id)
+    return redirect('/members')
