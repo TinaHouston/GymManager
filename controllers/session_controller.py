@@ -46,10 +46,15 @@ def update_class(id):
     session_repository.update(session)
     return redirect("/sessions")
 
-@sessions_blueprint.route("/sessions/filter")
+@sessions_blueprint.route("/sessions/availablefilter")
 def show_available_sessions():
     sessions = session_repository.select_all()
-    return render_template("/sessions/filter.html", sessions=sessions)
+    return render_template("/sessions/available_filter.html", sessions=sessions)
+
+@sessions_blueprint.route("/sessions/unavailablefilter")
+def show_unavailable_sessions():
+    sessions = session_repository.select_all()
+    return render_template("/sessions/unavailable_filter.html", sessions=sessions)
 
 @sessions_blueprint.route("/sessions/<id>/delete", methods=['POST'])
 def delete_session(id):

@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h1>Sitemap</h1>
+
+<ul>
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/sessions">Classes</a></li>
+    <ul style="padding-bottom: 0;">
+     <li style="margin-left:2em"><a href="/sessions/new">Add class</a></li>
+    </ul>
+    <li><a href="/members">Members</a></li>
+    <ul style="padding-bottom: 0;">
+        <li style="margin-left:2em"><a href="/members/new">Register new member</a></li>
+    </ul>
+    <li><a href="/bookings">Bookings</a></li>
+    <ul style="padding-bottom: 0;">
+        <li style="margin-left:2em"><a href="/bookings/new">New booking</a></li>
+    </ul>
+</ul>
+
+{% endblock %}

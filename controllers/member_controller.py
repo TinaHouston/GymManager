@@ -49,3 +49,13 @@ def update_member(id):
 def delete_member(id):
     member_repository.delete(id)
     return redirect('/members')
+
+@members_blueprint.route("/members/activefilter")
+def show_active_members():
+    members = member_repository.select_all()
+    return render_template("/members/filter_active.html", members=members)
+
+@members_blueprint.route("/members/deactivatedfilter")
+def show_deactivated_members():
+    members = member_repository.select_all()
+    return render_template("/members/filter_deactivated.html", members=members)

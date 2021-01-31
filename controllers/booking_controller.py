@@ -49,3 +49,7 @@ def update_book(id):
     booking = Booking(member, session, id)
     booking_repository.update(booking)
     return redirect("/bookings")
+
+@bookings_blueprint.route("/sitemap", methods = ['GET'])
+def sitemap():
+    return render_template("/sitemap/sitemap.html")

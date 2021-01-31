@@ -3,9 +3,8 @@
 {% block content %}
 <h1 class="users_heading">Member List</h1>
 
-<p>Show members: <a href="/members/activefilter">Active</a> | <a href="/members/deactivatedfilter">Deactivated</a></p>
-
 {% for member in members %}
+{% if member.active %}
 <div class="user_container">
 <p>Full Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
 <p>Age: {{member.age}}</p>
@@ -17,6 +16,7 @@
     <input class="btn btn--danger" type="submit" value="Delete"/>
     </form></p>
 <hr>
+{% endif %}
 {% endfor %}
 <p><a href="/members/new">Register new member</a></p>
 </div>
