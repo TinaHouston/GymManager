@@ -1,24 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="users_heading">Member List</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='classes_members.css') }}">
+<h1>Members</h1>
 
-<p>Show members: <a href="/members/activefilter">Active</a> | <a href="/members/deactivatedfilter">Deactivated</a></p>
-
-{% for member in members %}
-<div class="user_container">
-<p>Full Name: <a href="/members/{{member.id}}">{{member.name}}</a></p>
-<p>Age: {{member.age}}</p>
-<p>Active Membership: {{member.active}}</p>
-<p><form action="/members/{{member.id}}/edit" method="GET">
-    <input class="edit_button" type="submit" value="Edit"/>
-    </form></p>
-<p><form action="/members/{{member.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
-    <input class="btn btn--danger" type="submit" value="Delete"/>
-    </form></p>
-<hr>
-{% endfor %}
-<p><a href="/members/new">Register new member</a></p>
+<div class="show_classes">
+  <br>
+<p>Show: <a href="/members">All Members</a> | <a href="/members/activefilter">Active memberships</a> | <a href="/members/deactivatedfilter">Deactivated memberships</a></p>
 </div>
 
+<br>
+
+<table class="center">
+  <tr>
+    <th>Full Name</th>
+  
+    <th>Age</th>
+
+    <th>Active Membership</th>
+
+    <th>Classes</th>
+
+    <th>Edit</th>
+
+    <th>Delete</th>
+  </tr>
+  {% for member in members %}
+  <tr>
+    <td>{{member.name}}</td>
+
+    <td>{{member.age}}</td>
+ 
+    <td>{{member.active}}</td>
+
+    <td>
+        <form action="/members/{{member.id}}" method="GET">
+        <input class="view_button" type="submit" value="View"/>
+        </form>
+    </td>
+
+    <td>
+        <form action="/members/{{member.id}}/edit" method="GET">
+        <input class="edit_button" type="submit" value="Edit"/>
+        </form>
+    </td>
+
+    <td>
+        <form action="/members/{{member.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+        <input class="delete_button" type="submit" value="Delete"/>
+        </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<br>
+<p class="add_class"><a href="/members/new">Add member</a></p>
+<br>
 {% endblock %}

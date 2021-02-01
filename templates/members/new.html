@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+
+<span class="form_heading"><h1>Add new member:</h1></span>
+
 <form action="/members" method="post">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Name" required autofocus>
-    </div>
-    <div>
+        <p><input type="text" id="name" name="name" placeholder="Name" required autofocus></p>
+
         <label for="age">Age:</label>
-        <input type="text" id="age" name="age" placeholder="Age" required>
-    </div>
-    <div>
+        <p><input type="text" id="age" name="age" placeholder="Age" required></p>
+
         <label for="active">Active Membership:</label>
-        <select name="active" id="active">
+        <p></p><select name="active" id="active">
             <option>True</option>
             <option>False</option>
-        </select>
+        </select></p>
+        <br>
+        <p><button type="submit">Add Member</button></p>
     </div>
-    <hr>
-    <button type="submit">Add Member</button>
 </form>
-
+<br>
 {% endblock %}
