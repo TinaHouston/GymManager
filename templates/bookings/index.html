@@ -1,26 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='bookings.css') }}">
+
 <h1>Bookings Diary</h1>
-<ul>
+
+<table class="center">
+  <tr>
+    <th>Member</th>
+
+    <th>Class Booked</th>
+
+    <th>Date</th>
+
+    <th>Time</th>
+
+    <th>Edit</th>
+
+    <th>Delete</th>
+  </tr>
   {% for booking in bookings %}
-  <li>Member: {{booking.member.name}}</li>
-  <li>Class Booked: {{booking.session.name}}</li>
-  <li>Date: {{booking.session.date}}</li>
-  <li>Time: {{booking.session.time}}</li>
-    <p>
-      <form action="bookings/{{booking.id}}/edit" method="GET">
-        <input class="edit_button" type="submit" value="Edit"/>
-        </form>
-        <br>
-      <form action="/bookings/{{booking.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
-        <input class="btn btn--danger" type="submit" value="Delete"/>
+  <tr>
+    <td>{{booking.member.name}}</td>
+
+    <td>{{booking.session.name}}</td>
+
+    <td>{{booking.session.date}}</td>
+
+    <td>{{booking.session.time}}</td>
+
+    <td><form action="bookings/{{booking.id}}/edit" method="GET">
+      <input class="edit_button" type="submit" value="Edit"/>
       </form>
-    </p>
-  <hr>
-  {% endfor %}
-  </ul>
-  <p class="btn--wrapper">
-    <a class="btn btn--action" href="/bookings/new">New booking</a>
-  </p>
+    </td>
+
+    <td><form action="/bookings/{{booking.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+      <input class="delete_button" type="submit" value="Delete"/>
+    </form></td>
+    {% endfor %}
+  </tr>
+</table>
+
+<br>
+<p class="add_booking"><a href="/bookings/new">Add booking</a></p>
+<br>
+
 {% endblock %}
