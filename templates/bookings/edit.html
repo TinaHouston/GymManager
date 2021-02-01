@@ -1,25 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+
+<span class="form_heading"><h1>Update booking:</h1></span>
+
 <form action="/bookings/{{booking.id}}" method="post">
     <div>
         <label for="member">Member:</label>
-        <select name="member_id" id="member">
+        <p><select name="member_id" id="member">
             {% for member in all_members %}
+            {% if member.active %}
                 <option value="{{member.id}}" {% if booking.member.id == member.id %} selected="selected" {% endif %}>{{member.name}}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div>
-        <label for="session">Class:</label>
-        <select name="session_id" id="session">
-            {% for session in all_sessions %}
-                <option value="{{session.id}}" {% if booking.session.id == session.id %} selected="selected" {% endif %}>{{session.name}} {{session.date}}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <hr>
-    <button type="submit">Add Booking</button>
-</form>
+                {% endif %}
+                {% endfor %}
+        </select></p>
 
+        <label for="session">Class:</label>
+        <p><select name="session_id" id="session">
+            {% for session in all_sessions %}
+            {% if session.capacity %}
+                <option value="{{session.id}}" {% if booking.session.id == session.id %} selected="selected" {% endif %}>{{session.name}} {{session.date}}</option>
+                {% endif %}
+                {% endfor %}
+        </select></p>
+    <br>
+    <p><button type="submit">Add Booking</button></p>
+</form>
+</div>
+<br>
 {% endblock %}
