@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='classes.css') }}">
+
 <h1> {{session.name}} </h1>
 
 <h3>Members who've booked:</h3>
-<ul>
+
+<table class="center">
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+<!-- <ul> -->
     {% for member in members %}
-    <li>{{member.name}}, {{session.date}} - {{session.time}}</li>
+    <tr>
+    <td>{{member.name}}</td>
+    <td>{{session.date}}</td>
+    <td>{{session.time}}</td>
     {% endfor %}
-</ul>
+<!-- </ul> -->
+
+    </tr>
+</table>
+<br>
+<p class="add_class"><a href="/sessions">Back</a></p>
+<br>
 {% endblock %}

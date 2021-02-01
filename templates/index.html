@@ -1,39 +1,55 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h1>Pure Gym</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+<script src="https://kit.fontawesome.com/22bf3355d4.js" crossorigin="anonymous"></script>
+    <header>
+        <h1>Welcome to Gym Manager</h1>
 
-<p>Welcome!</p>
-<div class="members_area">
-    <h4>Manage Members</h4>
-    <ul>
-        <li>View list of members</li>
-        <li>View active/deactivated memberships</li>
-        <li>Edit members details</li>
-        <li>Add new member</li>
-        <li>Delete member</li>
-    </ul>
+        <p>Select your chosen option</p>
+    </header>
+    <div id="grid_container">
+    <a href="/members" id="members">
+        <h2><br><br>Manage Members</h2>
+        <br>
+        <i class="fas fa-user-friends"></i>
+        <!-- <ul>
+            <li>View list of members</li>
+            <li>View active/deactivated memberships</li>
+            <li>Edit members details</li>
+            <li>Add new member</li>
+            <li>Delete member</li>
+        </ul> -->
+    </a>
+    <a href="/sessions" id="classes">
+        <h2><br><br>Manage Classes</h2>
+        <br>
+        <i class="fas fa-dumbbell"></i>
+        <!-- <ul>
+            <li>View list of upcoming classes</li>
+            <li>View classes which are full</li>
+            <li>View classes with spaces</li>
+            <li>Edit class</li>
+            <li>Add new class</li>
+            <li>Delete class</li>
+        </ul> -->
+    </a>
 </div>
-<hr>
-<div class="classes_area">
-    <h4>Manage Classes</h4>
-    <ul>
-        <li>View list of upcoming classes</li>
-        <li>View classes which are full</li>
-        <li>View classes with spaces</li>
-        <li>Edit class</li>
-        <li>Add new class</li>
-        <li>Delete class</li>
-    </ul>
-</div>
-<hr>
-<div class="bookings_area">
-    <h4>Manage Bookings</h4>
-    <ul>
-        <li>View all bookings</li>
-        <li>Edit booking</li>
-        <li>Add new booking</li>
-        <li>Delete booking</li>
-    </ul>
+<br>
+<br>
+<div id="second_container">
+    <a href="/bookings" id="bookings">
+        <h2><br><br>Manage Bookings</h2>
+        <br>
+        <i class="fas fa-book-open"></i>
+        <!-- <ul>
+            <li>View all bookings</li>
+            <li>Edit booking</li>
+            <li>Add new booking</li>
+            <li>Delete booking</li>
+        </ul> -->
+    </a>
 </div>
 {% endblock %}
+<br>
+<br>

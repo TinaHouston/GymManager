@@ -1,0 +1,94 @@
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+tr:hover {
+    background-color: #cccccc;
+}
+
+table {
+    width: 80%;
+    align-items: center;
+}
+
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+}
+
+.show_classes {
+    font-size: 18px;
+}
+
+.show_classes a {
+    background-color: #17252A;
+    color: white;
+    text-decoration: none;
+    border-radius: 47px;
+    margin-top: 2px;
+    padding: 5px;
+}
+
+.view_button {
+        background-color: #17252A;
+        border: none;
+        color: white;
+        padding: 5px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        border-radius: 30px;
+}
+
+.edit_button {
+    background-color: #2B7A78;
+    border: none;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 30px;
+}
+
+.delete_button {
+    background-color: #3AAFA9;
+    border: none;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 30px;
+}
+
+.add_class {
+    background-color: #17252A;
+    border: none;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 30px;
+}
+
+.add_class a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}

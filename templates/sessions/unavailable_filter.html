@@ -1,33 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<table>
-    <tr>
-        <th><u>Name</u></th>
-        <th>|</th>
-        <th><u>Availability</u></th>
-        <th>|</th>
-        <th><u>Time</u></th>
-        <th>|</th>
-        <th><u>Date</u></th>
-        <th>|</th>
-        <th><u>Update</u></th>
-    </tr>
-    {% for session in sessions %}
-    {% if session.capacity == False %}
-    <tr>
-        <td><a href="/sessions/{{session.id}}">{{session.name}}</a></td>
-        <td>|</td>
-        <td>{{session.capacity}}</td>
-        <td>|</td>
-        <td>{{session.time}}</td>
-        <td>|</td>
-        <td>{{session.date}}</td>
-        <td>|</td>
-        <td><a href="/sessions/{{session.id}}/edit">Edit</a></td>
-    </tr>
-    {% endif %}
-    {% endfor %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='classes.css') }}">
+<h1>Upcoming Classes</h1>
+
+<div class="show_classes">
+  <br>
+<p>Show: <a href="/sessions">All classes</a> | <a href="/sessions/availablefilter">With spaces</a> | <a href="/sessions/unavailablefilter">Without spaces</a></p>
+</div>
+
+<br>
+
+<table class="center">
+  <tr>
+    <th>Name</th>
+  
+    <th>Availability</th>
+
+    <th>Time</th>
+
+    <th>Date</th>
+
+    <th>Members</th>
+
+    <th>Update</th>
+
+    <th>Delete</th>
+  </tr>
+  {% for session in sessions %}
+  {% if session.capacity == False %}
+  <tr>
+    <td>{{session.name}}</td>
+
+    <td>{{session.capacity}}</td>
+ 
+    <td>{{session.time}}</td>
+
+    <td>{{session.date}}</td>
+
+    <td>
+      <!-- <a href="/sessions/{{session.id}}">View</a> -->
+      <form action="/sessions/{{session.id}}" method="GET">
+        <input class="view_button" type="submit" value="View"/>
+        </form>
+    </td>
+
+    <td>
+      <!-- <a href="/sessions/{{session.id}}/edit">Edit</a> -->
+      <form action="/sessions/{{session.id}}/edit" method="GET">
+        <input class="edit_button" type="submit" value="Edit"/>
+        </form>
+    </td>
+
+    <td><form action="/sessions/{{session.id}}/delete" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');">
+      <input class="delete_button" type="submit" value="Delete"/>
+      </form></td>
+  </tr>
+  {% endif %}
+  {% endfor %}
 </table>
+<br>
+<p class="add_class"><a href="/sessions/new">Add Class to Timetable</a></p>
+<br>
 
 {% endblock %}
